@@ -17,7 +17,7 @@
 <script src="https://unpkg.com/feather-icons"></script>
 
 <!-- my style -->
-<link rel="stylesheet" href="style.css"
+<link rel="stylesheet" href="style.css"/>
 
 </head>
 <body>
@@ -30,14 +30,51 @@
             <a href="#Home">Home</a>
             <a href="#about">Tentang kami</a>
             <a href="#menu">Menu</a>
+            <a href="#pesan">Pesan Menu</a>
             <a href="#contact">Kontak</a>
         </div>
 
         <div class="navbar-extra">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-bag"><i data-feather="shopping-bag"></i></a>
+            <a href="#" id="search-button"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
         </div>
 
+        <!-- search form star -->
+         <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here...">
+            <label for="search-box"><i data-feather="search"></i></label>
+         </div>
+        <!-- search form end -->
+         
+         <!--shoppingcard start-->
+         <div class="shopping-cart">
+            <div class="cart-item">
+                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
+                <div class="item-detail">
+                    <h3>pesanan 1</h3>
+                    <div class="item-price">IDR 45K</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
+                <div class="item-detail">
+                    <h3>pesanan 1</h3>
+                    <div class="item-price">IDR 45K</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+            <div class="cart-item">
+                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
+                <div class="item-detail">
+                    <h3>pesanan 1</h3>
+                    <div class="item-price">IDR 45K</div>
+                </div>
+                <i data-feather="trash-2" class="remove-item"></i>
+            </div>
+         </div>
+         <!--shoppingcard end-->
     </nav>
     
     <!-- navbar end -->
@@ -62,7 +99,7 @@
         </div>
         <div class="content">
             <h3>Kenapa memilih kopi kami</h3>
-            <p>Kopi bagi kami bukan sekadar minuman—ia adalah cerita, perjalanan, dan perasaan yang ingin kami bagi. Dengan biji pilihan dari kebun terbaik, kami berkomitmen memberikan kehangatan dan semangat pada setiap cangkir kopi yang Anda nikmati.</p>
+            <p>Kopi bagi kami bukan sekadar minuman—ia adalah cerita, perjalanan, dan perasaan yang ingin kami bagi. Dengan biji pilihan dari kebun terbaik.</p>
         </div>
     </section>
     <!--about section end-->
@@ -97,6 +134,96 @@
         </div>
     </section>
     <!--Menu section end-->
+
+    <!--Pesan Menu start-->
+    <section class="pesan" id="pesan">
+        <h2> <span>Pesan Menu</span>Kami</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, quasi vero! Fugit illum odit beatae!</p>
+        
+        <div class="row">
+            <div class="pesan-card">
+                <div class="pesan-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="pesan-image">
+                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
+                </div>
+                <div class="pesan-content">
+                    <h3>Coffe enak bangat</h3>
+                    <div class="pesan-stars">
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
+                </div>
+            </div>
+            <div class="pesan-card">
+                <div class="pesan-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye" ></i></a>
+                </div>
+                <div class="pesan-image">
+                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
+                </div>
+                <div class="pesan-content">
+                    <h3>Coffe enak bangat</h3>
+                    <div class="pesan-stars">
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="pesan-price">IDR 45K</div>
+                </div>
+            </div>
+            <div class="pesan-card">
+                <div class="pesan-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="pesan-image">
+                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
+                </div>
+                <div class="pesan-content">
+                    <h3>Coffe enak bangat</h3>
+                    <div class="pesan-stars">
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
+                </div>
+            </div>
+            <div class="pesan-card">
+                <div class="pesan-icons">
+                    <a href="#"><i data-feather="shopping-cart"></i></a>
+                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                </div>
+                <div class="pesan-image">
+                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
+                </div>
+                <div class="pesan-content">
+                    <h3>Coffe enak bangat</h3>
+                    <div class="pesan-stars">
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Pesan Menu end-->
 
     <!--contact section start-->
     <section id="contact" class="contact">
@@ -141,12 +268,37 @@
         <p>created by <a href="">afifazakwan</a>. | &copy; 2024</p>
     </footer>
     <!--footer section end-->
+
+    <!--modal box item detail start-->
+    <div class="modal" id="item-detail-modal">
+        <div class="modal-container">
+            <a href="#pesan" class="close-icon"><i data-feather="x"></i></a>
+            <div class="modal-content">
+                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="produk 1">
+                <div class="product-content">
+                    <h3>Pesanan 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae amet earum tempora enim repudiandae cum alias aliquam blanditiis dicta, sunt praesentium temporibus facilis unde?</p>
+                    <div class="pesan-stars">
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star" class="starfull"></i>
+                        <i data-feather="star"></i>
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
+                    <a href="#"><i data-feather="shopping-cart"></i><span>add to cart</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal box item detail end-->
     
     <!--feather icon-->
     <script>
         feather.replace();
       </script>
 
+     <script src="js/script.js"></script>
      
 </body>
 </html>
