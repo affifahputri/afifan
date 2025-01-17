@@ -57,6 +57,10 @@ body {
     color: var(--primary)
 }
 
+#hamburger-menu{
+    display: none;
+}
+
 .navbar .navbar-nav a::after {
    content: '';
     display: block;
@@ -70,6 +74,11 @@ body {
     transform: scaleX(0.5);
 }
 
+.navbar .search-form{
+    width: 90%;
+    right: 2rem;
+}
+
 .navbar .navbar-extra a {
     color: #fff;
     margin: 0 0.5rem;
@@ -79,14 +88,98 @@ body {
     color: var(--primary);
 }
 
+/*navbar seacrh form*/
+.navbar .search-form {
+    position: absolute;
+    top: 100%;
+    right: 7%;
+    background-color: #fff;
+    width: 50rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+}
 
+.navbar .search-form.active{
+    transform: scaleY(1);
+}
+
+.navbar .search-form input{
+    height: 100%;
+    width: 100%;
+    font-size: 1.6rem;
+    color: var(--bg);
+    padding: 1rem;
+}
+
+.navbar .search-form label{
+    cursor: pointer;
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    color: var(--bg);
+}
+
+/*navbar shopping cart*/
+.shopping-cart{
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 35rem;
+    height: 100vh;
+    padding: 0 1.5rem;
+    color: var(--bg);
+    background-color: #fff;
+    transition: 0.3s linear;
+}
+
+.shopping-cart .cart-item{
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #333;
+    position: relative;
+}
+
+.shopping-cart img{
+    height: 6rem;
+    border-radius: 50%;
+}
+
+.shopping-cart h3{
+    font-size: 1.4rem;
+    padding-bottom: 0.5rem;
+}
+
+.shopping-cart .item-price{
+    font-size: 1.1rem;
+
+}
+
+.shopping-cart .remove-item{
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.shopping-cart .remove-item:hover{
+    color: var(--primary);
+}
+
+.shopping-cart.active {
+    right: 0;
+}
 
 /*hero section*/
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('../ProjekAfifan/img/devin-avery-B3u-SJbCy0U-unsplash.jpg');
+    background-image: url('img/devin-avery-B3u-SJbCy0U-unsplash.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -229,6 +322,100 @@ body {
     margin-top: 1.5rem auto 0.5rem;
 }
 
+
+/*Pesan section*/
+.pesan {
+    padding: 7rem 1.4rem;
+}
+
+.pesan h2{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.pesan h2 span{
+    color: var(--primary);
+}
+
+.pesan p{
+    text-align: center;
+    max-width: 30rem;
+    margin: auto;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.pesan .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.pesan .pesan-card{
+    text-align: center;
+    border: 1px solid #666;
+    padding: 2rem;
+}
+
+.pesan .pesan-icons{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.pesan .pesan-icons a{
+    width: 4rem;
+    height: 4rem;
+    color: #fff;
+    margin: 0.3;
+    border: 1px solid #666;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pesan .pesan-icons a:hover{
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.pesan .pesan-image {
+    padding: 1rem 0;
+}
+
+.pesan .pesan-image img{
+    height: 25rem;
+}
+
+.pesan .pesan-content h3{
+    font-size: 2rem;
+}
+
+.pesan .pesan-stars{
+    font-size: 1.7rem;
+    padding: 0.8rem;
+    color: var(--primary);
+}
+
+.pesan .pesan-stars .starfull{
+    fill: var(--primary);
+}
+
+.pesan .pesan-price{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.pesan .pesan-price span{
+    text-decoration: line-through;
+    font-weight: lighter;
+    font-size: 1rem;
+}
+
+
 /*contact section*/
 .contact {
     padding: 7rem 1.4rem;
@@ -335,8 +522,160 @@ footer .credit a {
     font-weight: 700;
 }
 
+/*modal box*/
+/*item details*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-container {
+    position: relative;
+    background-color: #fefefe;
+    color: var(--bg);
+    margin: 10% auto;
+    padding: 1.2rem;
+    border: 1px solid #666;
+    width: 80%;
+    
+}
+
+
+.modal-container .close-icon {
+    position: absolute;
+    right: 1rem;
+}
+
+.modal-content {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.modal-content img {
+    height: 25rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-top: 1.2rem;
+}
+
+.modal-content a{
+    display: flex;
+    gap: 1rem;
+    width: 12rem;
+    background-color: var(--primary);
+    color: #fff;
+    margin-top: 1rem;
+    padding: 1rem 1.6rem    ;
+}
 
 
 
+/*media queries*/
 
+/*Tablet*/
+@media (max-width: 768px) {
+    html{
+        font-size: 62.5%;
+    }
+#hamburger-menu{
+    display: inline-block;
+}
+.navbar .navbar-nav{
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: white;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+}
+
+.navbar .navbar-nav.active{
+    right: 0;
+}
+
+.navbar .navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.navbar .navbar-nav a::after{
+    transform-origin: 0 0;
+}
+
+.navbar .navbar-nav a:hover::after{
+    transform: scaleX(0.2);
+}
+.navbar .search-form{
+    width: 90%;
+    right: 2rem;
+}
+
+.modal {
+    flex-wrap: wrap;
+}
+}
+
+
+/*Mobile phone*/
+@media (max-width:450px){
+    html{
+        font-size: 55%;
+    }
+    #hamburger-menu{
+        display: inline-block;
+    }
+    .navbar .navbar-nav{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: white;
+        width: 30rem;
+        height: 100vh;
+        transition: 0.3s;
+    }
+    
+    .navbar .navbar-nav.active{
+        right: 0;
+    }
+    
+    .navbar .navbar-nav a {
+        color: var(--bg);
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+    
+    .navbar .navbar-nav a::after{
+        transform-origin: 0 0;
+    }
+    
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(0.2);
+    }
+    .navbar .search-form{
+        width: 90%;
+        right: 2rem;
+    }
+    
+    .modal {
+        flex-wrap: wrap;
+    }
+}
 
