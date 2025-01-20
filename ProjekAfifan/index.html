@@ -19,11 +19,18 @@
 <!-- my style -->
 <link rel="stylesheet" href="style.css"/>
 
+<!--alpine js-->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+<!--App-->
+<script src="src/app.js"></script>
+
 </head>
 <body>
 
     <!--navbar start  -->
-    <nav class="navbar">
+    <nav class="navbar" x-data>
         <a href="#" class="navbar-logo">afifan<span>coffe</span></a>
 
         <div class="navbar-nav">
@@ -36,7 +43,10 @@
 
         <div class="navbar-extra">
             <a href="#" id="search-button"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="shopping-cart-button">
+                <i data-feather="shopping-cart"></i>
+                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity" ></span>
+            </a>
             <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
         </div>
 
@@ -49,29 +59,43 @@
          
          <!--shoppingcard start-->
          <div class="shopping-cart">
+            <template x-for="(item, index) in $store.cart.items" x-keys="index">
             <div class="cart-item">
-                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
+                <img :src="`img/${item.img}`" :alt="item.name">
                 <div class="item-detail">
-                    <h3>pesanan 1</h3>
-                    <div class="item-price">IDR 45K</div>
+                    <h3 x-text="item.name"></h3>
+                    <div class="item-price">
+                        <span x-text="rupiah(item.price)"></span> &times;
+                        <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                        <span x-text="item.quantity"></span>
+                        <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+                        <span x-text="rupiah(item.total)"></span>
+                    </div>
                 </div>
-                <i data-feather="trash-2" class="remove-item"></i>
             </div>
-            <div class="cart-item">
-                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
-                <div class="item-detail">
-                    <h3>pesanan 1</h3>
-                    <div class="item-price">IDR 45K</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-            <div class="cart-item">
-                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="pesanan 1">
-                <div class="item-detail">
-                    <h3>pesanan 1</h3>
-                    <div class="item-price">IDR 45K</div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
+            </template>
+            <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Isi Keranjangnya Dong</h4>
+            <h4 x-show="$store.cart.items.length">Harga total : <span x-text="rupiah($store.cart.total)"></span></h4>
+            <div class="form-container" x-show="$store.cart.items.length">
+                <form action="" id="checkoutform">
+                    <h5>Detail Pembeli</h5>
+
+                    <label for="name">
+                        <span>Nama</span>
+                        <input type="text" name="name" id="name">
+                    </label>
+
+                    <label for="email">
+                        <span>Email</span>
+                        <input type="email" name="email" id="email">
+                    </label>
+
+                    <label for="phone">
+                        <span>Nomor Telepon</span>
+                        <input type="number" name="phone" id="phone" autocomplete="off">
+                    </label>
+                    <button class="checkout-button" type="submit" id="checkout-button" value="checkout">Gas Membeli</button>
+                </form>
             </div>
          </div>
          <!--shoppingcard end-->
@@ -136,21 +160,44 @@
     <!--Menu section end-->
 
     <!--Pesan Menu start-->
-    <section class="pesan" id="pesan">
+    <section class="pesan" id="pesan" x-data="Pesan">
         <h2> <span>Pesan Menu</span>Kami</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, quasi vero! Fugit illum odit beatae!</p>
         
         <div class="row">
+            <template x-for="(item, index) in items" x-key="index">
             <div class="pesan-card">
                 <div class="pesan-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+                    <a href="#" @click.prevent="$store.cart.add(item)">
+                        <svg
+                            width="24"
+                            height="24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            >
+                            <use href="img/feather-sprite.svg#shopping-cart" />
+                        </svg>
+                    </a>
+                    <a href="#" class="item-detail-button"><svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <use href="img/feather-sprite.svg#eye" />
+                      </svg></a>
                 </div>
                 <div class="pesan-image">
-                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
+                    <img :src="`img/${item.img}`" :alt="item.name">
                 </div>
                 <div class="pesan-content">
-                    <h3>Coffe enak bangat</h3>
+                    <h3 x-text="item.name"></h3>
                     <div class="pesan-stars">
                         <i data-feather="star" class="starfull"></i>
                         <i data-feather="star" class="starfull"></i>
@@ -158,69 +205,9 @@
                         <i data-feather="star"></i>
                         <i data-feather="star"></i>
                     </div>
-                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
+                    <div class="pesan-price"> <span x-text="rupiah(item.price)"></span></div>
                 </div>
-            </div>
-            <div class="pesan-card">
-                <div class="pesan-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye" ></i></a>
-                </div>
-                <div class="pesan-image">
-                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
-                </div>
-                <div class="pesan-content">
-                    <h3>Coffe enak bangat</h3>
-                    <div class="pesan-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                    </div>
-                    <div class="pesan-price">IDR 45K</div>
-                </div>
-            </div>
-            <div class="pesan-card">
-                <div class="pesan-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="pesan-image">
-                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
-                </div>
-                <div class="pesan-content">
-                    <h3>Coffe enak bangat</h3>
-                    <div class="pesan-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                    </div>
-                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
-                </div>
-            </div>
-            <div class="pesan-card">
-                <div class="pesan-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="pesan-image">
-                    <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="Pesanan 1">
-                </div>
-                <div class="pesan-content">
-                    <h3>Coffe enak bangat</h3>
-                    <div class="pesan-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                    </div>
-                    <div class="pesan-price">IDR 45K <span>IDR 65K</span></div>
-                </div>
-            </div>
+            </template>
         </div>
     </section>
     <!--Pesan Menu end-->
@@ -274,7 +261,7 @@
         <div class="modal-container">
             <a href="#pesan" class="close-icon"><i data-feather="x"></i></a>
             <div class="modal-content">
-                <img src="img/DALL·E 2025-01-17 16.16.14 - A steaming cup of coffee served in a beautifully designed ceramic mug placed on a wooden table, surrounded by coffee beans and a small bouquet of flow.webp" alt="produk 1">
+                <img src="img/Menu.webp" alt="produk 1">
                 <div class="product-content">
                     <h3>Pesanan 1</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae amet earum tempora enim repudiandae cum alias aliquam blanditiis dicta, sunt praesentium temporibus facilis unde?</p>
