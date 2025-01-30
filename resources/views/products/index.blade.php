@@ -51,7 +51,7 @@
         </div>
         
         <button id="checkoutButton" class="bg-green-500 text-black px-10 py-2 rounded-md font-semibold mt-4 w-full hidden">
-            Checkout via WhatsApp
+            Checkout Via WhatsApp
         </button>
     </div>
 </div>
